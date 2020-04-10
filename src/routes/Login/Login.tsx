@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { authSelectors, login } from '../../state/ducks/Auth';
 import { Routes } from '../Routes';
+import { authSelectors, login } from '../../state/ducks/Auth';
 import { Field } from '../../commons/components/Field';
 
 export const Login: React.FC = () => {

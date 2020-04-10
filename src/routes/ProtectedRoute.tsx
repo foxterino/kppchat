@@ -6,8 +6,8 @@ import {
   RouteComponentProps
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { authSelectors } from '../state/ducks/Auth';
 import { Routes } from './Routes';
+import { authSelectors } from '../state/ducks/Auth';
 
 export interface ProtectedRouteProps extends RouteProps {
   component:
