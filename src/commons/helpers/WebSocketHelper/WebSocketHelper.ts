@@ -1,7 +1,7 @@
-import { socketUrl } from '../../../api';
 import { noop } from '../../Utility';
+import { socketUrl } from '../../../api';
 
-class WebSocketHelper {
+class WSHelper {
   private readonly baseURL: string;
 
   private socket: WebSocket | null = null;
@@ -48,4 +48,4 @@ class WebSocketHelper {
   };
 }
 
-export default new WebSocketHelper(socketUrl);
+export const WebSocketHelper = new WSHelper(socketUrl);

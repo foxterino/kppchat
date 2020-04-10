@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import WebSocketHelper from '../../../commons/helpers/WebSocketHelper/WebSocketHelper';
 import { MessageList } from './components/MessageList';
 import { MessageForm } from './components/MessageForm';
 import { authSelectors } from '../../../state/ducks/Auth';
 import { getMessage } from '../../../state/ducks/Chat';
 import { Message } from '../../../state/ducks/Chat/Types';
+import { WebSocketHelper } from '../../../commons/helpers/WebSocketHelper';
 
 export const Chat = () => {
   const username = useSelector(authSelectors.username);
