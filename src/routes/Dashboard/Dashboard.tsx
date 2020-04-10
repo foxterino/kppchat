@@ -1,5 +1,11 @@
 import React from 'react';
+import { Chat } from './Chat';
 
 export const Dashboard: React.FC = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <p>Dashboard</p>
+      <Chat />
+    </div>
+  );
 };
