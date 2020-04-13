@@ -11,6 +11,7 @@ export interface Chat {
 export interface Message {
   data: string;
   username: string;
+  date: Date;
 }
 
 export const ChatActions = {

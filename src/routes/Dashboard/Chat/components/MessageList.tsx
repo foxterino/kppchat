@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { chatSelectors } from '../../../../state/ducks/Chat';
-import { MessageAuthor } from './MessageAuthor';
 import { MessageData } from './MessageData';
+import { chatSelectors } from '../../../../state/ducks/Chat';
 import { isNil } from '../../../../commons/Utility';
+import { formatMessageDate } from '../../../../commons/DateUtilities';
 
 export const MessageList: React.FC = () => {
   const messages = useSelector(chatSelectors.messages);
@@ -12,15 +12,18 @@ export const MessageList: React.FC = () => {
     <EmptyMessageList />
   ) : (
     <ul>
-      {messages.map(({ data, username }, index) => {
+      {messages.map(({ data, username, date }, index) => {
         const prevIndex = Math.max(0, index - 1);
         const { username: prevUsername } = messages[prevIndex];
         const shouldDisplayUsername = !index || username !== prevUsername;
 
         return (
           <li key={index}>
-            {shouldDisplayUsername && <MessageAuthor username={username} />}
-            <MessageData data={data} />
+            {shouldDisplayUsername && <p>{username}:</p>}
+            <div>
+              <p>{formatMessageDate(date)}</p>
+              <MessageData data={data} />
+            </div>
           </li>
         );
       })}

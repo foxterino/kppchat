@@ -22,8 +22,8 @@ export const Chat = () => {
     };
   }, [dispatch]);
 
-  const sendMessage = (message: string) => {
-    WebSocketHelper.send({ data: message, username });
+  const sendMessage = (data: string) => {
+    WebSocketHelper.send({ data, username, date: Date.now() });
   };
 
   return (
