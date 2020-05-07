@@ -1,0 +1,37 @@
+.message-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+}
+
+.message-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.message-username {
+  margin-bottom: 5px;
+  color: rgb(0, 123, 255);
+}
+
+.message-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-data {
+  margin-bottom: 0;
+  margin-right: 10px;
+  word-break: break-all;
+}
+
+.message-date {
+  color: #5a6169;
+}
+
+.message-input {
+  margin-bottom: 20px;
+}

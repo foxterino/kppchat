@@ -4,6 +4,7 @@ import { MessageData } from './MessageData';
 import { chatSelectors } from '../../../../state/ducks/Chat';
 import { isNil } from '../../../../commons/Utility';
 import { formatMessageDate } from '../../../../commons/DateUtilities';
+import '../style.css';
 
 export const MessageList: React.FC = () => {
   const messages = useSelector(chatSelectors.messages);
@@ -11,18 +12,20 @@ export const MessageList: React.FC = () => {
   return isNil(messages) ? (
     <EmptyMessageList />
   ) : (
-    <ul>
+    <ul className="message-list">
       {messages.map(({ data, username, date }, index) => {
         const prevIndex = Math.max(0, index - 1);
         const { username: prevUsername } = messages[prevIndex];
         const shouldDisplayUsername = !index || username !== prevUsername;
 
         return (
-          <li key={index}>
-            {shouldDisplayUsername && <p>{username}:</p>}
-            <div>
-              <p>{formatMessageDate(date)}</p>
+          <li key={index} className="message-item">
+            {shouldDisplayUsername && (
+              <p className="message-username">{username}:</p>
+            )}
+            <div className="message-content">
               <MessageData data={data} />
+              <span className="message-date">{formatMessageDate(date)}</span>
             </div>
           </li>
         );
