@@ -1,0 +1,26 @@
+.friend-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+}
+
+.friend-item {
+  flex: 1;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.friend-item:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+.is-active {
+  border: 1px solid rgb(0, 123, 255);
+  background-color: rgba(0, 123, 255, 0.1);
+}
