@@ -2,9 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import './index.css';
 import App from './App';
 import { store } from './state';
+
+import './index.css';
+import './normalize.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'shards-ui/dist/css/shards.min.css';
 
 ReactDOM.render(
   <Provider store={store}>
