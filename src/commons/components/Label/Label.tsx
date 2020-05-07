@@ -1,13 +1,14 @@
 import React from 'react';
+import './style.css';
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  textVisuallyHidden?: boolean;
+  hidden?: boolean;
 }
 
-export const Label: React.FC<LabelProps> = ({
-  children,
-  textVisuallyHidden,
-  ...props
-}) => {
-  return <label {...props}>{children}</label>;
+export const Label: React.FC<LabelProps> = ({ children, hidden, ...props }) => {
+  return (
+    <label className={hidden ? 'label-hidden' : ''} {...props}>
+      {children}
+    </label>
+  );
 };
