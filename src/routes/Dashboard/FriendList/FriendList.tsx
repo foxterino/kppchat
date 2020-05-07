@@ -5,11 +5,10 @@ import { chatSelectors, switchRoom } from '../../../state/ducks/Chat';
 import { isNil } from '../../../commons/Utility';
 import './style.css';
 
-interface FriendListProps {}
-
-export const FriendList: React.FC<FriendListProps> = ({}) => {
+export const FriendList: React.FC = () => {
   const rooms = useSelector(chatSelectors.rooms);
   const currentRoom = useSelector(chatSelectors.currentRoom);
+
   const dispatch = useDispatch();
 
   const handleSwitchRoom = (newRoom: string) => () => {
@@ -22,9 +21,9 @@ export const FriendList: React.FC<FriendListProps> = ({}) => {
         <EmptyFriendList />
       ) : (
         <ul className="friend-list">
-          {rooms.map((room, index) => (
+          {rooms.map(room => (
             <li
-              key={index}
+              key={room}
               onClick={handleSwitchRoom(room)}
               className={`friend-item ${
                 currentRoom === room ? 'is-active' : ''
