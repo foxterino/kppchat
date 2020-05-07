@@ -6,7 +6,8 @@ function createWindow() {
     height: 700,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    title: 'My Chat on Electron'
   });
 
   const appUrl = 'http://localhost:3000/';
