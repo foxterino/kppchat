@@ -15,8 +15,8 @@ Enter username and join the chat network and you'll be automatically connected t
 
     Verify installation:
 
-    - `bash node -v`
-    - `bash npm -v`
+    - `node -v`
+    - `npm -v`
 
 1.  Install application dependencies
 
