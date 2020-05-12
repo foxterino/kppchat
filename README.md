@@ -25,8 +25,9 @@ Enter username and join the chat network and you'll be automatically connected t
 1.  Run it!
 
     - start backend server
-      - `npm run start`
-        in backend folder. [See backend setup](https://github.com/foxterino/kpp-backend).
+      - `npm ci` in kpp-backend folder
+      - `npm run start` in kpp-backend folder
+        For more details [see backend setup](https://github.com/foxterino/kpp-backend).
     - run dev server
       - `npm run start`
     - run desktop application
