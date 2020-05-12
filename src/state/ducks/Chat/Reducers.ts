@@ -16,10 +16,7 @@ const initialState: Chat = {
 export const chatReducer = createReducer(initialState, {
   [ChatActions.GET_MESSAGE]: (state, action: GetMessage) => ({
     ...state,
-    messages:
-      state.currentRoom === action.payload.room
-        ? [...state.messages, action.payload]
-        : state.messages
+    messages: [...state.messages, action.payload]
   }),
   [ChatActions.UPDATE_ROOMS]: (state, action: UpdateRooms) => ({
     ...state,

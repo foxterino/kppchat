@@ -20,7 +20,9 @@ export const Dashboard: React.FC = () => {
 
   useEffect(() => {
     const handleMessage = (message: Message) => {
-      dispatch(getMessage(message));
+      if (message.room === currentRoom) {
+        dispatch(getMessage(message));
+      }
     };
 
     const handleRoomsUpdate = (message: RoomsMessage) => {
@@ -32,7 +34,7 @@ export const Dashboard: React.FC = () => {
     return () => {
       ChatService.unsubscribe();
     };
-  }, [username, dispatch]);
+  }, [dispatch, currentRoom]);
 
   const sendMessage = (data: string) => {
     ChatService.send({

@@ -12,7 +12,7 @@ export const FriendList: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleSwitchRoom = (newRoom: string) => () => {
-    return dispatch(switchRoom(newRoom));
+    dispatch(switchRoom(newRoom));
   };
 
   return (
