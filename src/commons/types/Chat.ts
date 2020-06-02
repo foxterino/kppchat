@@ -1,6 +1,6 @@
 export enum ChatEvents {
   join = 'join',
-  roomsUpdated = 'roomsUpdated',
+  roomsUpdate = 'roomsUpdate',
   message = 'message'
 }
 

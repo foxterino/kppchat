@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import useWebSocket from 'react-use-websocket';
 import { Container, Row, Button } from 'shards-react';
 import { Chat } from './Chat';
 import { FriendList } from './FriendList';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors } from '../../state/ducks/Auth';
-import { ChatService } from '../../service/Chat';
 import { Message, RoomsMessage } from '../../state/ducks/Chat/Types';
 import { getMessage, updateRooms, chatSelectors } from '../../state/ducks/Chat';
 import { ChatEvents } from '../../commons/types';
+import { socketUrl } from '../../api';
 import './style.css';
 
 export const Dashboard: React.FC = () => {
@@ -18,36 +19,32 @@ export const Dashboard: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const handleMessage = (message: Message) => {
-      if (message.room === currentRoom) {
-        dispatch(getMessage(message));
-      }
-    };
+  const onMessage = (messageEvent: MessageEvent) => {
+    const message: RoomsMessage | Message = JSON.parse(messageEvent.data);
 
-    const handleRoomsUpdate = (message: RoomsMessage) => {
+    if (message.event === ChatEvents.message && message.room === currentRoom) {
+      dispatch(getMessage(message));
+    }
+
+    if (message.event === ChatEvents.roomsUpdate) {
       dispatch(updateRooms(message.rooms));
-    };
+    }
+  };
 
-    ChatService.subscribe({ handleMessage, handleRoomsUpdate });
-
-    return () => {
-      ChatService.unsubscribe();
-    };
-  }, [dispatch, currentRoom]);
+  const { sendJsonMessage } = useWebSocket(socketUrl, { onMessage });
 
   const sendMessage = (data: string) => {
-    ChatService.send({
+    sendJsonMessage({
+      event: ChatEvents.message,
       data,
       username,
-      date: Date.now(),
-      event: ChatEvents.message,
-      room: currentRoom
+      room: currentRoom,
+      date: Date.now()
     });
   };
 
   const joinChat = () => {
-    ChatService.send({ event: ChatEvents.join, username });
+    sendJsonMessage({ event: ChatEvents.join, username });
     setJoined(true);
   };
 

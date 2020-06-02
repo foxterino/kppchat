@@ -20,7 +20,7 @@ export interface Message {
 }
 
 export interface RoomsMessage {
-  event: ChatEvents.roomsUpdated;
+  event: ChatEvents.roomsUpdate;
   rooms: string[];
 }
 
