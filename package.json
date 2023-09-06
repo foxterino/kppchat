@@ -59,7 +59,7 @@
     "@types/redux-actions": "^2.6.1",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
-    "electron": "^8.1.1",
+    "electron": "^22.3.21",
     "electron-builder": "^22.4.1",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
